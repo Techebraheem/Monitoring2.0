@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: json-server
+  name: json-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: json-server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/json-server-default: "true"
+        io.kompose.service: json-server
+    spec:
+      containers:
+        - args:
+            - -H
+            - 0.0.0.0
+            - -p
+            - "3000"
+            - -w
+            - db.json
+          image: vimagick/json-server
+          name: json-server
+          ports:
+            - containerPort: 3000
+          resources: {}
+          volumeMounts:
+            - mountPath: /data
+              name: json-server-claim0
+      restartPolicy: Always
+      volumes:
+        - name: json-server-claim0
+          persistentVolumeClaim:
+            claimName: json-server-claim0
+status: {}
