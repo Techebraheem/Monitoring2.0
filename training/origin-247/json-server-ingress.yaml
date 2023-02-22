@@ -4,6 +4,7 @@ metadata:
   name: json-server-ingress
   namespace: default
 spec:
+  ingressClassName: nginx
   rules:
     - host: json-server.devops-playground.com
       http:
