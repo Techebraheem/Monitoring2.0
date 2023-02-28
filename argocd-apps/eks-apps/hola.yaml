@@ -32,7 +32,7 @@ metadata:
   name: hola-service
   namespace: argocd
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: alb
+    kubernetes.io/ingress.class: alb
 spec:
   selector:
     app: hola
