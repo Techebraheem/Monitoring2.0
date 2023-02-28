@@ -41,7 +41,6 @@ spec:
   type: LoadBalancer
 status:
   loadBalancer:
-    type: application
     ingress:
       - hostname: waf-alb-873823791.us-east-1.elb.amazonaws.com
 # ---
