@@ -31,6 +31,8 @@ kind: Service
 metadata:
   name: hola-service
   namespace: argocd
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: alb
 spec:
   selector:
     app: hola
