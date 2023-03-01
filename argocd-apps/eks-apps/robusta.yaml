@@ -12,7 +12,7 @@ spec:
   project: default
   sources:
   - repoURL: git@github.com:Timtech4u/devops-playground.git
-    targetRevision: feat/robusta
+    targetRevision: main
     ref: timtechRepo
   - repoURL: https://robusta-charts.storage.googleapis.com
     chart: robusta
