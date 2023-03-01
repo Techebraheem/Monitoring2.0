@@ -37,7 +37,7 @@ spec:
   targetRevision: 0.10.12
   helm:
     valueFiles:
-      - $timtechRepo/argocd-apps/nginx-manifests/values/robusta.yaml         
+      - values/robusta.yaml         
   syncPolicy:
     automated:
       prune: true
