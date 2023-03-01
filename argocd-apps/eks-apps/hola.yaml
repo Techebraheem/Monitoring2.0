@@ -31,6 +31,8 @@ kind: Service
 metadata:
   name: hola-service
   namespace: argocd
+  annotations:
+    kubernetes.io/ingress.class: alb
 spec:
   selector:
     app: hola
@@ -39,3 +41,17 @@ spec:
     port: 80
     targetPort: 8080
   type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+      - hostname: waf-alb-873823791.us-east-1.elb.amazonaws.com
+# ---
+# apiVersion: elbv2.k8s.aws/v1beta1
+# kind: TargetGroupBinding
+# metadata:
+#   name: hola-tgb
+# spec:
+#   serviceRef:
+#     name: hola-service
+#     port: 80
+#   targetGroupARN: arn:aws:elasticloadbalancing:us-east-1:712726181972:targetgroup/waf-alb-target-group/3821bc97d59d50c7

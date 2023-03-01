@@ -9,3 +9,16 @@ variable "cluster_name" {
   type        = string
   default     = "dev-workloads"
 }
+
+# Define the associations variable
+variable "associations" {
+  type = map(object({
+    action = string
+  }))
+
+  default = {
+    "alb-listener" = {
+      action = "ALLOW"
+    }
+  }
+}

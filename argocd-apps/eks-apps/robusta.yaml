@@ -1,25 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-nginx
+  name: robusta
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: ingress-nginx
+    namespace: observability
     server: https://kubernetes.default.svc
   project: default
   sources:
   - repoURL: git@github.com:Timtech4u/devops-playground.git
-    targetRevision: HEAD
+    targetRevision: main
     ref: timtechRepo
-  - repoURL: https://helm.nginx.com/stable
-    chart: nginx-ingress
-    targetRevision: 0.13.2
+  - repoURL: https://robusta-charts.storage.googleapis.com
+    chart: robusta
+    targetRevision: 0.10.12
     helm:
       valueFiles:
-        - $timtechRepo/argocd-apps/eks-apps/values/values-ingress-nginx.yaml         
+        - $timtechRepo/argocd-apps/eks-apps/values/robusta.yaml         
   syncPolicy:
     automated:
       prune: true
