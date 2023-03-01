@@ -13,14 +13,14 @@ kind: VirtualServer
 metadata: 
   name: rate-virtual-server 
 spec: 
-  ingressClassName: nginx-api 
+  ingressClassName: nginx 
   host: limits.hostspaceng.com 
   policies: 
   - name: rate-limit-policy 
   upstreams: 
   - name: api 
-    service: hello-service 
-    port: 8000
+    service: next-app-service 
+    port: 3000
   routes: 
   - path: / 
     action: 
