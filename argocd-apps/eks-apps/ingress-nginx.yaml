@@ -19,7 +19,7 @@ spec:
     targetRevision: 0.13.2
     helm:
       valueFiles:
-        - $timtechRepo/argocd-apps/rc-test/values/values-ingress-nginx.yaml         
+        - $timtechRepo/argocd-apps/eks-apps/values/values-ingress-nginx.yaml         
   syncPolicy:
     automated:
       prune: true
