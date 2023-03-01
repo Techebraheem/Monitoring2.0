@@ -1,28 +1,28 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: robusta
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  destination:
-    namespace: observability
-    server: https://kubernetes.default.svc
-  project: default
-  sources:
-  - repoURL: git@github.com:Timtech4u/devops-playground.git
-    targetRevision: feat/robusta
-    ref: timtechRepo
-  - repoURL: https://robusta-charts.storage.googleapis.com
-    chart: robusta
-    targetRevision: 0.10.12
-    helm:
-      valueFiles:
-        - $timtechRepo/argocd-apps/eks-apps/values/robusta.yaml         
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: robusta
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   destination:
+#     namespace: observability
+#     server: https://kubernetes.default.svc
+#   project: default
+#   sources:
+#   - repoURL: git@github.com:Timtech4u/devops-playground.git
+#     targetRevision: feat/robusta
+#     ref: timtechRepo
+#   - repoURL: https://robusta-charts.storage.googleapis.com
+#     chart: robusta
+#     targetRevision: 0.10.12
+#     helm:
+#       valueFiles:
+#         - $timtechRepo/argocd-apps/eks-apps/values/robusta.yaml         
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#     - CreateNamespace=true
