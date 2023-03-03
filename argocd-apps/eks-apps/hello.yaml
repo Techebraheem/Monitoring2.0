@@ -17,6 +17,7 @@ spec:
   - repoURL: https://github.com/hostspaceng/helm-charts
     chart: helm-app
     targetRevision: main
+    path: ./
     helm:
       valueFiles:
         - $timtechRepo/argocd-apps/eks-apps/values/hello.yaml         
