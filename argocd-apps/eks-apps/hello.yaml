@@ -15,7 +15,6 @@ spec:
     targetRevision: HEAD
     ref: timtechRepo
   - repoURL: https://github.com/hostspaceng/helm-charts
-    chart: helm-app
     targetRevision: main
     path: ./
     helm:
