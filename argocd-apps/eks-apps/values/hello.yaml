@@ -4,3 +4,4 @@ image:
 service:
   type: LoadBalancer
   port: 8080
+replicaCount: 1
