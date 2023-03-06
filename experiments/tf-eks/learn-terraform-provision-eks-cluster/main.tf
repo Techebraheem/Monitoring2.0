@@ -54,23 +54,23 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "node-group-1"
+      name = "dw-node-group-1"
 
       instance_types = ["t3.small"]
 
-      min_size     = 1
+      min_size     = 2
       max_size     = 4
-      desired_size = 2
+      desired_size = 3
     }
 
-#     two = {
-#       name = "node-group-2"
+    two = {
+      name = "dw-node-group-2"
 
-#       instance_types = ["t3.small"]
+      instance_types = ["t2.medium"]
 
-#       min_size     = 1
-#       max_size     = 2
-#       desired_size = 1
-#     }
+      min_size     = 1
+      max_size     = 3
+      desired_size = 2
+    }
   }
 }
