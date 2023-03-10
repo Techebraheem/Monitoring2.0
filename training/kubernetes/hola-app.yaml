@@ -9,7 +9,8 @@ spec:
     helm:
       values: |
         image:
-          repository: 712726181972.dkr.ecr.us-east-1.amazonaws.com/flaskimage:latest
+          repository: 712726181972.dkr.ecr.us-east-1.amazonaws.com/flaskimage
+          tag: latest
         service:
           type: LoadBalancer
         containerPort: 8080
