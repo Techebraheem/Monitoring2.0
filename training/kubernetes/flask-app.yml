@@ -1,28 +1,28 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: flask-app
-spec:
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  project: default
-  source:
-    repoURL: 'git@github.com:Timtech4u/devops-playground.git'
-    path: '.'
-    targetRevision: HEAD
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-  spec:
-    template:
-      spec:
-        containers:
-          - name: flask
-            image: 712726181972.dkr.ecr.us-east-1.amazonaws.com/flaskimage:latest
-            ports:
-              - containerPort: 5000
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: flask-app
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   project: default
+#   source:
+#     repoURL: 'git@github.com:Timtech4u/devops-playground.git'
+#     path: '.'
+#     targetRevision: HEAD
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#   spec:
+#     template:
+#       spec:
+#         containers:
+#           - name: flask
+#             image: 712726181972.dkr.ecr.us-east-1.amazonaws.com/flaskimage:latest
+#             ports:
+#               - containerPort: 5000
 
 # apiVersion: apps/v1
 # kind: Deployment
