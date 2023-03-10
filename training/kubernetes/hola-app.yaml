@@ -9,7 +9,7 @@ spec:
     helm:
       values: |
         image:
-          repository: gcr.io/cloudrun/hello
+          repository: 712726181972.dkr.ecr.us-east-1.amazonaws.com/flaskimage:latest
         service:
           type: LoadBalancer
         containerPort: 8080
