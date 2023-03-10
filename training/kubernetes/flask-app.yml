@@ -1,44 +1,70 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
   name: flask-app
-  labels:
-    app: flask
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: flask
-  template:
-    metadata:
-      labels:
-        app: flask
-    spec:
-      containers:
-      - name: flask
-        image: 712726181972.dkr.ecr.us-east-1.amazonaws.com/flaskimage:latest
-        ports:
-        - containerPort: 5000
-        env:
-        - name: FLASK_ENV
-          value: production
-        - name: FLASK_APP
-          value: app.py
-        - name: SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: flask-secrets
-              key: secret-key
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: flask-service
-spec:
-  selector:
-    app: flask
-  ports:
-  - name: http
-    port: 80
-    targetPort: 5000
-  type: LoadBalancer
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: default
+  source:
+    repoURL: 'git@github.com:Timtech4u/devops-playground.git'
+    path: '.'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  spec:
+    template:
+      spec:
+        containers:
+          - name: flask
+            image: 712726181972.dkr.ecr.us-east-1.amazonaws.com/flaskimage:latest
+            ports:
+              - containerPort: 5000
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: flask-app
+#   labels:
+#     app: flask
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: flask
+#   template:
+#     metadata:
+#       labels:
+#         app: flask
+#     spec:
+#       containers:
+#       - name: flask
+#         image: 712726181972.dkr.ecr.us-east-1.amazonaws.com/flaskimage:latest
+#         ports:
+#         - containerPort: 5000
+#         env:
+#         - name: FLASK_ENV
+#           value: production
+#         - name: FLASK_APP
+#           value: app.py
+#         - name: SECRET_KEY
+#           valueFrom:
+#             secretKeyRef:
+#               name: flask-secrets
+#               key: secret-key
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: flask-service
+# spec:
+#   selector:
+#     app: flask
+#   ports:
+#   - name: http
+#     port: 80
+#     targetPort: 5000
+#   type: LoadBalancer
