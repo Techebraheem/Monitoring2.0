@@ -1,59 +1,59 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hola-deployment
-  namespace: argocd
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: hola
-  template:
-    metadata:
-      labels:
-        app: hola
-    spec:
-      containers:
-      - name: hola
-        image: gcr.io/cloudrun/hello
-        resources:
-          limits:
-            cpu: "0.1"
-            memory: "1Gi"
-          requests:
-            cpu: "0.05"
-            memory: "512Mi"
-        ports:
-        - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: hola-service
-  namespace: argocd
-  annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-spec:
-  selector:
-    app: hola
-  ports:
-  - name: http
-    port: 80
-    targetPort: 8080
-  type: LoadBalancer
-status:
-  loadBalancer:
-    ingress:
-      - hostname: waf-alb-873823791.us-east-1.elb.amazonaws.com
-# ---
-# apiVersion: elbv2.k8s.aws/v1beta1
-# kind: TargetGroupBinding
+# apiVersion: apps/v1
+# kind: Deployment
 # metadata:
-#   name: hola-tgb
+#   name: hola-deployment
+#   namespace: argocd
 # spec:
-#   serviceRef:
-#     name: hola-service
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: hola
+#   template:
+#     metadata:
+#       labels:
+#         app: hola
+#     spec:
+#       containers:
+#       - name: hola
+#         image: gcr.io/cloudrun/hello
+#         resources:
+#           limits:
+#             cpu: "0.1"
+#             memory: "1Gi"
+#           requests:
+#             cpu: "0.05"
+#             memory: "512Mi"
+#         ports:
+#         - containerPort: 8080
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: hola-service
+#   namespace: argocd
+#   annotations:
+#     kubernetes.io/ingress.class: alb
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+# spec:
+#   selector:
+#     app: hola
+#   ports:
+#   - name: http
 #     port: 80
-#   targetGroupARN: arn:aws:elasticloadbalancing:us-east-1:712726181972:targetgroup/waf-alb-target-group/3821bc97d59d50c7
+#     targetPort: 8080
+#   type: LoadBalancer
+# status:
+#   loadBalancer:
+#     ingress:
+#       - hostname: waf-alb-873823791.us-east-1.elb.amazonaws.com
+# # ---
+# # apiVersion: elbv2.k8s.aws/v1beta1
+# # kind: TargetGroupBinding
+# # metadata:
+# #   name: hola-tgb
+# # spec:
+# #   serviceRef:
+# #     name: hola-service
+# #     port: 80
+# #   targetGroupARN: arn:aws:elasticloadbalancing:us-east-1:712726181972:targetgroup/waf-alb-target-group/3821bc97d59d50c7
