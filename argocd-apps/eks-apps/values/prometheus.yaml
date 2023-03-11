@@ -2,4 +2,4 @@ server:
   service:
     type: LoadBalancer
   persistentVolume:
-    volumeName: vol-04e12907e21ffd6a3
+    volumeName: kubernetes-dynamic-pvc-vol-04e12907e21ffd6a3
