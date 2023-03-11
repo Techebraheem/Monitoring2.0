@@ -1,5 +1,11 @@
 server:
   service:
     type: LoadBalancer
+#   persistentVolume:
+#     volumeName: kubernetes-dynamic-pvc-vol-04e12907e21ffd6a3
+alertmanager:
   persistentVolume:
-    volumeName: kubernetes-dynamic-pvc-vol-04e12907e21ffd6a3
+    storageClass: gp2
+server:
+  persistentVolume:
+    storageClass: gp2
