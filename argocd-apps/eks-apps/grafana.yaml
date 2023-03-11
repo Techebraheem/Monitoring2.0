@@ -16,7 +16,7 @@ spec:
     ref: timtechRepo
   - repoURL: https://grafana.github.io/helm-charts
     chart: grafana
-    targetRevision: HEAD
+    targetRevision: 6.52.2
     helm:
       valueFiles:
         - $timtechRepo/argocd-apps/eks-apps/values/grafana.yaml         
