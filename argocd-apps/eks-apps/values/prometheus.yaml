@@ -3,6 +3,8 @@ server:
     type: LoadBalancer
   persistentVolume:
     storageClass: gp2
+    volumeName: dw-node-group-1
 alertmanager:
   persistentVolume:
+    volumeName: dw-node-group-1
     storageClass: gp2  
