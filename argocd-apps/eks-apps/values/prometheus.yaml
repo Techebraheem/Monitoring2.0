@@ -1,9 +1,8 @@
 server:
   service:
     type: LoadBalancer
+  persistentVolume:
+    storageClass: gp2
 alertmanager:
   persistentVolume:
-    storageClass: gp2
-server:
-  persistentVolume:
-    storageClass: gp2
+    storageClass: gp2  
