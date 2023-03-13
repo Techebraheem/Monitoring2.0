@@ -8,6 +8,9 @@ spec:
   source:
     helm:
       values: |
+        image:
+          repository: ghcr.io/energywebfoundation/matching-demo
+          tag: "latest"       
         service:
           port: 5000          
         ingress:
@@ -23,7 +26,7 @@ spec:
             - secretName: matching-demo-ui
               hosts:
                 - matching-demo-ui.hostspaceng.com 
-    repoURL: https://github.com/hostspaceng/helm-charts
+    repoURL: git@github.com:hostspaceng/helm-charts.git
     targetRevision: main
     path: ./
   destination:
