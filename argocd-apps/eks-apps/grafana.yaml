@@ -7,19 +7,19 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: monitoring
+    namespace: helium-grafana
     server: https://kubernetes.default.svc
   project: default
   sources:
-  - repoURL: git@github.com:Timtech4u/devops-playground.git
+  - repoURL:  https://github.com/Techebraheem/Monitoring.git
     targetRevision: HEAD
-    ref: timtechRepo
+    ref: techebraheemRepo
   - repoURL: https://grafana.github.io/helm-charts
     chart: grafana
     targetRevision: 6.52.2
     helm:
       valueFiles:
-        - $timtechRepo/argocd-apps/eks-apps/values/grafana.yaml         
+        - $techbraheemRepo/argocd-apps/eks-apps/values/grafana.yaml         
   syncPolicy:
     automated:
       prune: true
