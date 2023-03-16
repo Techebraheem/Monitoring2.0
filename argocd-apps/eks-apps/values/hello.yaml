@@ -1,7 +1,7 @@
-image:
-  repository: gcr.io/cloudrun/hello
-  tag: "latest"
-service:
-  type: LoadBalancer
-  port: 8080
-replicaCount: 1
+# image:
+#   repository: gcr.io/cloudrun/hello
+#   tag: "latest"
+# service:
+#   type: LoadBalancer
+#   port: 8080
+# replicaCount: 1
