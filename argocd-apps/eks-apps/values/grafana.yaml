@@ -28,6 +28,6 @@ dashboardProviders:
 dashboards:
   default:
     kubernetes:
-      gnetId: 10000
+      gnetId: 315
       revision: 1
       datasource: Prometheus
